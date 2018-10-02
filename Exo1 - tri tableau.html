@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+
+
+    <script>
+        // Sortir le minimul à chaque itération
+
+
+        let numbers = [0, 1, 5, 3, 9, 7, 25, 4, 12, 15, 19, 6, 13, 8, 22];
+        let length = numbers.length;
+        let sortedNumbers = [];
+        //let index = numbers.indexOf(Math.min);
+
+
+        
+            for (i = 0; i < numbers.length; i++) {
+            
+            sortedNumbers.push(Math.min(...numbers));
+            //numbers.splice(index, 1);
+            
+            
+       
+        };
+
+        console.log(numbers);
+        console.log(sortedNumbers);
+
+
+
+
+
+
+
+
+
+        /* Travail de la logique 
+        
+        Pour trier un tableau contenant des chiffres dans le désordre.
+        Quelle logique j'appliquerais pour les trier à la main.
+        
+        Je pars du 0 et je les range dans l'ordre croissant dans un nouveau tableau.
+        
+        
+        Si je dois les ranger dans le même tableau, je vais repérer les valeurs extrêmes, puis pour les autres chiffres les comparer entre eux pour les déplacer. Si le voisin de gauche est plus grand, je le déplace à droite de mon chiffre, et ainsi de suite.
+        
+        
+        
+        
+        
+        
+        
+    
+        let numbers = [0, 1, 5, 3, 9, 7];
+        let sortedNumbers = [];
+        
+        numbers.forEach(function(number) {
+            for (i = 0; i < 50; i++) {
+            
+            
+           if (numbers[i] <= i) {
+                sortedNumbers.push(i);
+                }
+            }
+                
+        });
+        
+       
+        
+        for (i = 0; i < numbers.length; i++) {
+            if (numbers[i] <= i) {
+            sortedNumbers.push(numbers[i]);
+            }
+        }
+            
+             
+        
+        console.log(numbers);
+        console.log(sortedNumbers);
+        
+        */
+    </script>
+</body>
+
+</html>
