@@ -22,16 +22,14 @@
             width: 1000px;
             height: auto;
         }
-        
+
         .row {
             background-color: black;
         }
-        
-        .cell {
-            
-        }
-        
-/*
+
+        .cell {}
+
+        /*
         living {
             background-color: black;
         }
@@ -40,13 +38,12 @@
             background-color: white;
         }
 */
-        
     </style>
 </head>
 
 <body>
 
-<div id="container"></div>
+    <div id="container"></div>
 
 
     <script>
@@ -60,69 +57,95 @@
             [0, 0, 1, 0, 0, 0, 0, 0],
             [0, 1, 0, 0, 0, 0, 0, 0],
             [0, 0, 1, 0, 1, 0, 0, 0],
-            [0, 1, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 1, 0, 0, 0, 0, 0, 0],
-            [0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 1, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 1, 0, 1, 0, 1, 1, 0],
-            [0, 0, 0, 0, 0, 0, 1, 0],
-            [0, 0, 0, 0, 0, 1, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 1, 0, 0, 0, 1, 0, 0],
-            [0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 1, 0, 0, 0, 0, 0, 0],
         ]
 
-        function init() {
+    
+         function compare(array, i, j) {
             
-            var container = document.getElementById('container');
-            
-            for (var i = 0; i < damier.length; i++) {
+            for (var i = 0; i < array.length; i++) {
                 // row permet d'itérer par ligne, et non sur la longueur totale du tableau, pour j.
-                var row = damier[i];
+                var row = array[i];
                 
-                var newRow = document.createElement("div");
-                newRow.setAttribute("class", "row");
-                container.appendChild(newRow);
-                    
-                for (var j = 0; j < row.length; j++) {
-                    //                    livingCell();
-                    //                    deadCell();
-                    //                    console.log(damier[i][j]);
+                // Comparer ici les valeurs i
 
-                    var newCell = document.createElement("div");
-                    newCell.setAttribute("class", "cell");
-                    newRow.append(newCell);
-                }
+                for (var j = 0; j < row.length; j++) {
+                console.log(array[i][j])
+                // Comparer ici les valeurs j
+                    
+                };
             };
-        }
-        init();
+         }
+            compare(damier);
         
+        
+        
+           
+        
+        
+        
+        
+        
+        
+//        function init() {
 //
-//        function compare(array) {
+//            var container = document.getElementById('container');
 //
-//            if (damier[i][j] == 0 && damier[i][j - 1] == 1 && damier[i][j + 1] == 1) {
+//            for (var i = 0; i < damier.length; i++) {
+//                // row permet d'itérer par ligne, et non sur la longueur totale du tableau, pour j.
+//                var row = damier[i];
+//
+//                var newRow = document.createElement("div");
+//                newRow.setAttribute("class", "row");
+//                container.appendChild(newRow);
+//
+//                for (var j = 0; j < row.length; j++) {
+//
+//                    var newCell = document.createElement("div");
+//                    newCell.setAttribute("class", "cell");
+//                    newRow.append(newCell);
+//                }
+//            };
+//        }
+//        init();
+        
+
+//            var back = damier[i][j - 1];
+//            var forward = damier[i][j + 1];
+//            var up = damier[i - 1][j];
+//            var down = damier[i + 1][j];
+//
+//            // Activation cellule
+//
+//            if (damier[i][j] == 1 && back == 1 && forward == 1 || up == 1 || down == 1) {
 //                damier[i][j] = 1;
-//            } else if (damier[i][j] == 1 && damier[i][j - 1] == 1 && damier[i][j + 1] == 1) {
+//            } else if (damier[i][j] == 1 && back == 1 || forward == 1 && up == 1 || down == 1) {
 //                damier[i][j] = 1;
-//            } else if (damier[i][j] == 1 && damier[i][j - 1] == 0 && damier[i][j + 1] == 0) {
+//            } else if (damier[i][j] == 1 && back == 1 || forward == 1 || up == 1 && down == 1) {
+//                damier[i][j] = 1;
+//            } else if (damier[i][j] == 1 || back == 1 && forward == 1 || up == 1 && down == 1) {
+//                damier[i][j] = 1;
+//            } else if (damier[i][j] == 1 || back == 1 || forward == 1 && up == 1 && down == 1) {
+//                damier[i][j] = 1;
+//            } else {
 //                damier[i][j] = 0;
 //            }
-//            if (damier[i][j] == 1) {
-//                console.log('YES');
+//
+//            // Désactivation cellule
+//
+//            if (damier[i][j] == 0 && back == 1 && forward == 1 && up == 1 || down == 1) {
+//                    damier[i][j] = 1;
+//            } else if (damier[i][j] == 0 && back == 1 || forward == 1 && up == 1 && down == 1) {
+//                damier[i][j] = 1;
+//            } else if (damier[i][j] == 0 || back == 1 && forward == 1 && up == 1 && down == 1) {
+//                damier[i][j] = 1;
+//            } else if (damier[i][j] == 0 && back == 1 && forward == 1 || up == 1 && down == 1) {
+//                damier[i][j] = 1;
+//            } else {
+//                damier[i][j] = 0;
 //            }
-//        }
-//
-//
-//
-//        console.log(array);
-//        }
 //        compare(damier);
-//
+//            
+//            
 
 
         //        function compare() {
@@ -181,8 +204,6 @@
         //                damier[i][j] = 0;
         //            }
         //        }
-        
-        
     </script>
 </body>
 
