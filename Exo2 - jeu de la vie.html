@@ -56,26 +56,30 @@
             [0, 1, 0, 0, 0, 0, 0, 0],
             [0, 0, 1, 0, 0, 0, 0, 0],
             [0, 1, 0, 0, 0, 0, 0, 0],
-            [0, 0, 1, 0, 1, 0, 0, 0],
         ]
 
+        
+        function blabla (array, x, y) {
+            console.log(array[x][y-1] + array[x+1][y]);
+        }
+        blabla(damier, x, y);
     
-         function compare(array, i, j) {
-            
-            for (var i = 0; i < array.length; i++) {
-                // row permet d'itérer par ligne, et non sur la longueur totale du tableau, pour j.
-                var row = array[i];
-                
-                // Comparer ici les valeurs i
-
-                for (var j = 0; j < row.length; j++) {
-                console.log(array[i][j])
-                // Comparer ici les valeurs j
-                    
-                };
-            };
-         }
-            compare(damier);
+//         function compare(array, i, j) {
+//            
+//            for (var i = 0; i < array.length; i++) {
+//                // row permet d'itérer par ligne, et non sur la longueur totale du tableau, pour j.
+//                var row = array[i];
+//                
+//                // Comparer ici les valeurs i
+//
+//                for (var j = 0; j < row.length; j++) {
+//                console.log(array[i][j])
+//                // Comparer ici les valeurs j
+//                    
+//                };
+//            };
+//         }
+//            compare(damier);
         
         
         
