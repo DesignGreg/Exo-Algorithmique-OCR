@@ -8,37 +8,18 @@
     
     Pour concevoir un jeu de la vie avec Javascript, je pense suivre ces étapes :
     - Créer un damier avec une boucle JS, chaque div ayant la classe background-color: white;
+    
     - Concevoir les règles du jeu avec une fonction, repose sur des conditions :
     À chaque étape, l’évolution d’une cellule est entièrement déterminée par l’état de ses huit voisines de la façon suivante :
     Une cellule morte possédant exactement trois voisines vivantes devient vivante (elle naît).
     Une cellule vivante possédant deux ou trois voisines vivantes le reste, sinon elle meurt.
+    
     - Sélectionner les cellules de départ et modifier leur classe en background-color: black;
+    
     - Les classes background servent à classer les cellules dans la fonction et à faire fonctionner le jeu.
     
     -->
 
-    <style>
-        .container {
-            width: 1000px;
-            height: auto;
-        }
-
-        .row {
-            background-color: black;
-        }
-
-        .cell {}
-
-        /*
-        living {
-            background-color: black;
-        }
-        
-        dead {
-            background-color: white;
-        }
-*/
-    </style>
 </head>
 
 <body>
@@ -48,167 +29,60 @@
 
     <script>
         const damier = [
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 1, 0, 1, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 1, 0],
-            [0, 0, 0, 0, 0, 1, 0, 0],
-            [0, 1, 0, 0, 0, 0, 0, 0],
-            [0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 1, 0, 0, 0, 0, 0, 0],
+            [0, 1, 1, 0],
+            [0, 1, 1, 0],
+            [0, 1, 1, 0],
+            [0, 1, 1, 0]
         ]
 
-        
-        function blabla (array, x, y) {
-            console.log(array[x][y-1] + array[x+1][y]);
+        function getNbVoisinVivant(tableau, x, y) {
+            let nbVoisinVivant = 0;
+            for (let i = x - 1; i <= x + 1; i++) {
+                for (let j = y - 1; j <= y + 1; j++) {
+                    const isPositionOutOfArray = (i < 0 || i >= tableau.length || j < 0 || j >= tableau[i].length)
+                    if ((x !== i || y !== j) && !isPositionOutOfArray)
+                        nbVoisinVivant += tableau[i][j]
+                }
+            }
+            return nbVoisinVivant;
         }
-        blabla(damier, x, y);
-    
-//         function compare(array, i, j) {
-//            
-//            for (var i = 0; i < array.length; i++) {
-//                // row permet d'itérer par ligne, et non sur la longueur totale du tableau, pour j.
-//                var row = array[i];
-//                
-//                // Comparer ici les valeurs i
-//
-//                for (var j = 0; j < row.length; j++) {
-//                console.log(array[i][j])
-//                // Comparer ici les valeurs j
-//                    
-//                };
-//            };
-//         }
-//            compare(damier);
-        
-        
-        
-           
-        
-        
-        
-        
-        
-        
-//        function init() {
-//
-//            var container = document.getElementById('container');
-//
-//            for (var i = 0; i < damier.length; i++) {
-//                // row permet d'itérer par ligne, et non sur la longueur totale du tableau, pour j.
-//                var row = damier[i];
-//
-//                var newRow = document.createElement("div");
-//                newRow.setAttribute("class", "row");
-//                container.appendChild(newRow);
-//
-//                for (var j = 0; j < row.length; j++) {
-//
-//                    var newCell = document.createElement("div");
-//                    newCell.setAttribute("class", "cell");
-//                    newRow.append(newCell);
-//                }
-//            };
-//        }
-//        init();
-        
+        console.log(getNbVoisinVivant(damier, 3, 0))
 
-//            var back = damier[i][j - 1];
-//            var forward = damier[i][j + 1];
-//            var up = damier[i - 1][j];
-//            var down = damier[i + 1][j];
-//
-//            // Activation cellule
-//
-//            if (damier[i][j] == 1 && back == 1 && forward == 1 || up == 1 || down == 1) {
-//                damier[i][j] = 1;
-//            } else if (damier[i][j] == 1 && back == 1 || forward == 1 && up == 1 || down == 1) {
-//                damier[i][j] = 1;
-//            } else if (damier[i][j] == 1 && back == 1 || forward == 1 || up == 1 && down == 1) {
-//                damier[i][j] = 1;
-//            } else if (damier[i][j] == 1 || back == 1 && forward == 1 || up == 1 && down == 1) {
-//                damier[i][j] = 1;
-//            } else if (damier[i][j] == 1 || back == 1 || forward == 1 && up == 1 && down == 1) {
-//                damier[i][j] = 1;
-//            } else {
-//                damier[i][j] = 0;
-//            }
-//
-//            // Désactivation cellule
-//
-//            if (damier[i][j] == 0 && back == 1 && forward == 1 && up == 1 || down == 1) {
-//                    damier[i][j] = 1;
-//            } else if (damier[i][j] == 0 && back == 1 || forward == 1 && up == 1 && down == 1) {
-//                damier[i][j] = 1;
-//            } else if (damier[i][j] == 0 || back == 1 && forward == 1 && up == 1 && down == 1) {
-//                damier[i][j] = 1;
-//            } else if (damier[i][j] == 0 && back == 1 && forward == 1 || up == 1 && down == 1) {
-//                damier[i][j] = 1;
-//            } else {
-//                damier[i][j] = 0;
-//            }
-//        compare(damier);
-//            
-//            
+        function getNextCellState(tableau, x, y) {
+            // mettre la règle en fonction du nombre de voisins
+            const nbVoisinVivant = getNbVoisinVivant(tableau, x, y)
+            var coordonnees = tableau[i][j];
+            
+            for (let i = x - 1; i <= x + 1; i++) {
+                for (let j = y - 1; j <= y + 1; j++) {
+                    //surpopulation et sous population
+                    if (nbVoisinVivant !== 3) {
+                        coordonnees = 0;
+                    } else {
+                        // reproduction
+                        coordonnees = 1;
+                    }
+                }
+            }
+        }
 
-
-        //        function compare() {
-        //            if (damier[i][j] == 0 && damier[i][j - 1] == 1 && damier[i][j + 1] == 1) {
-        //                damier[i][j] = 1;
-        //            } else if (damier[i][j] == 1 && damier[i][j - 1] == 1 && damier[i][j + 1] == 1) {
-        //                damier[i][j] = 1;
-        //            } else if (damier[i][j] == 1 && damier[i][j - 1] == 0 && damier[i][j + 1] == 0) {
-        //                damier[i][j] = 0;
-        //            }
-        //            if (damier[i][j] == 1) {
-        //                console.log('YES');
-        //            }
-        //        }
-        //        
-        // Pour comparer entre cellules adjacentes, mais aussi à la vertical entre tableaux
-        //
-        //        function livingCell() {
-        //
-        //            var back = damier[i][j - 1];
-        //            var forward = damier[i][j + 1];
-        //            var up = damier[i - 1][j];
-        //            var down = damier[i + 1][j];
-        //
-        //            if (damier[i][j] == 1 && back == 1 && forward == 1 || up == 1 || down == 1) {
-        //                damier[i][j] = 1;
-        //            } else if (damier[i][j] == 1 && back == 1 || forward == 1 && up == 1 || down == 1) {
-        //                damier[i][j] = 1;
-        //            } else if (damier[i][j] == 1 && back == 1 || forward == 1 || up == 1 && down == 1) {
-        //                damier[i][j] = 1;
-        //            } else if (damier[i][j] == 1 || back == 1 && forward == 1 || up == 1 && down == 1) {
-        //                damier[i][j] = 1;
-        //            } else if (damier[i][j] == 1 || back == 1 || forward == 1 && up == 1 && down == 1) {
-        //                damier[i][j] = 1;
-        //            } else {
-        //                damier[i][j] = 0;
-        //            }
-        //        }
-        //
-        //        function deadCell() {
-        //
-        //            var back = damier[i][j - 1];
-        //            var forward = damier[i][j + 1];
-        //            var up = damier[i - 1][j];
-        //            var down = damier[i + 1][j];
-        //
-        //            if (damier[i][j] == 0 && back == 1 && forward == 1 && up == 1 || down == 1) {
-        //                damier[i][j] = 1;
-        //            } else if (damier[i][j] == 0 && back == 1 || forward == 1 && up == 1 && down == 1) {
-        //                damier[i][j] = 1;
-        //            } else if (damier[i][j] == 0 || back == 1 && forward == 1 && up == 1 && down == 1) {
-        //                damier[i][j] = 1;
-        //            } else if (damier[i][j] == 0 && back == 1 && forward == 1 || up == 1 && down == 1) {
-        //                damier[i][j] = 1;
-        //            } else {
-        //                damier[i][j] = 0;
-        //            }
-        //        }
+        // 3° fonction qui va créer la nouvelle version du tableau, qui n'appelle que la deuxième fonction
+        function nouveauTableau (tableau, x, y) {
+            getNextCellState();
+            
+            // itérer à travers damier
+            
+            // remplacer les anciennes valeurs par les nouvelles de getNextCellStage
+            
+            // return le nouvel array
+        }
+        
+        
     </script>
 </body>
+
+
+
+
 
 </html>
