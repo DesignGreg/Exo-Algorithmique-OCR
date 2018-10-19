@@ -46,12 +46,12 @@
             }
             return nbVoisinVivant;
         }
-        console.log(getNbVoisinVivant(damier, 3, 0))
+        console.log(getNbVoisinVivant(damier, 3, 0));
 
         function getNextCellState(tableau, x, y) {
             // mettre la règle en fonction du nombre de voisins
             const nbVoisinVivant = getNbVoisinVivant(tableau, x, y)
-            var coordonnees = tableau[i][j];
+            var coordonnees = tableau[x][y];
             
             for (let i = x - 1; i <= x + 1; i++) {
                 for (let j = y - 1; j <= y + 1; j++) {
@@ -64,7 +64,10 @@
                     }
                 }
             }
+            // coordonnees permet à la fonction nouveauTableau() de créer le nouveau tableau
+            return coordonnees;
         }
+        console.log(getNextCellState(damier, 0, 0));
 
         // 3° fonction qui va créer la nouvelle version du tableau, qui n'appelle que la deuxième fonction
         function nouveauTableau (tableau, x, y) {
@@ -72,7 +75,8 @@
             
             // itérer à travers damier
             
-            // remplacer les anciennes valeurs par les nouvelles de getNextCellStage
+            // remplacer les anciennes valeurs par les nouvelles de getNextCellState
+            // comment comparer les anciennes valeurs avec les nouvelles ?
             
             // return le nouvel array
         }
